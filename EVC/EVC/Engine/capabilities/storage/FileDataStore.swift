@@ -13,10 +13,10 @@ import Foundation
 class FileDataStore {
 
     //MARK: - Public Interface
-    func persistToDisk(model: SampleModel) {
+    func saveModel(_ model: SampleModel?) {
     }
 
-    func loadModelFromDisk(callback: ((SampleModel?) -> Void)) {
+    func loadModel(callback: ((SampleModel?) -> Void)) {
     }
 }
 

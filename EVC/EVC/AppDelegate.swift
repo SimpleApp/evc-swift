@@ -3,8 +3,6 @@
 //  EVC
 //
 //  Created by Benjamin Garrigues on 04/09/2017.
-//  Copyright © 2017 SimpleApp. All rights reserved.
-//
 
 import UIKit
 

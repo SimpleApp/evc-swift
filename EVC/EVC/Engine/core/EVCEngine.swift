@@ -50,12 +50,12 @@ class EVCEngine {
 
         //Capabilities
         dataStore = mockedDatastore ?? FileDataStore()
-        restAPI   = mockedRestAPI   ?? SampleJSONRestAPI()
+        restAPI   = try! mockedRestAPI ?? SampleJSONRestAPI(environment: initialContext.environment)
 
-        //Middleware
+        //Middlewares
 
         //Services
-        //FIXME: ?? syntax creating a compiler error for some reason..
+        //FIXME: ?? syntax creating a compiler error for unknown reason..
         // sampleService = mockedService ?? SampleService(restAPI: restAPI)
         if let mockedService = mockedService {
             sampleService = mockedService

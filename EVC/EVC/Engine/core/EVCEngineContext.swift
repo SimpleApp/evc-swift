@@ -6,7 +6,7 @@
 
 import Foundation
 //Configuration environment
-enum Environment {
+enum EVCEngineEnvironment {
     case development
     case integration
     case production
@@ -14,7 +14,7 @@ enum Environment {
 
 //A context contains common values
 struct EVCEngineContext {
-    var environment: Environment
+    var environment: EVCEngineEnvironment
     var applicationForeground: Bool
     /* Add any other properties you may find useful to your services and capabilities here */
 }
