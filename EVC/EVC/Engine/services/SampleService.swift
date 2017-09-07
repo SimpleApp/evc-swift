@@ -32,7 +32,7 @@ class SampleService {
 
     //MARK: - Internal functions
     fileprivate func updateCurrentSampleData(with data: SampleModel?) {
-        assert(Thread.isMainThread, "[SampleService] updateCurrentSampleData error : service works on the main thread only.")
+        assert(Thread.isMainThread, "[SampleService] updateCurrentSampleData from background thread")
         sampleData = data
         observers.invoke { $0.onSampleService(self, didUpdateSampleDataTo: sampleData) }
         dataStore.saveModel(sampleData)
@@ -43,9 +43,16 @@ class SampleService {
     //Those are the functions you would create a protocol from, in order to create a mock for unit-testing your GUI.
 
     public var currentSampleData: SampleModel? { return sampleData }
-
-    public func refreshPosts(onError: ((_ error: Error?) -> Void)?) {
-        assert(Thread.isMainThread, "[SampleService] refreshPosts error : service method should be called on the main thread only.")
+    public func register(observer : SampleServiceObserver) {
+        assert(Thread.isMainThread, "[SampleService] register observer from background thread")
+        observers.add(value: observer)
+    }
+    public func unregister(observer: SampleServiceObserver) {
+        assert(Thread.isMainThread, "[SampleService] unregister observer from background thread")
+        observers.remove(value: observer)
+    }
+    public func refreshData(onError: ((_ error: Error?) -> Void)?) {
+        assert(Thread.isMainThread, "[SampleService] refreshData from background thread")
         restAPI.getSampleModel(
             onSuccess: { [weak self](model) in guard let strongSelf = self else { return }
                 strongSelf.updateCurrentSampleData(with: model) },
@@ -57,12 +64,9 @@ class SampleService {
 extension SampleService: EVCEngineComponent {
     //load data the first time the engine provide us with some context.
     func onEngineContextUpdate(context: EVCEngineContext) {
-        guard dataLoaded == false else { return }
-        dataStore.loadModel(callback: {[weak self] (model) in
-            if let model = model {
-                self?.sampleData = model
-            }
-            self?.dataLoaded = true
-        })
+        if dataLoaded == false {
+            sampleData = dataStore.loadModel()
+            dataLoaded = true
+        }
     }
 }

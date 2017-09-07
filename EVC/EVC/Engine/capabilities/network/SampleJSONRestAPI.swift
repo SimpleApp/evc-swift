@@ -19,11 +19,11 @@ class SampleJSONRestAPI: JSONRestAPIBase {
         // Customize your server url depending on the environment
         switch environment {
         case .development:
-            return "http://jsonplaceholder.typicode.com"
+            return "https://jsonplaceholder.typicode.com"
         case .integration:
-            return "http://jsonplaceholder.typicode.com"
+            return "https://jsonplaceholder.typicode.com"
         case .production:
-            return "http://jsonplaceholder.typicode.com"
+            return "https://jsonplaceholder.typicode.com"
         }
     }
 

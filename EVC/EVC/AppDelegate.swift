@@ -11,9 +11,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var engine: EVCEngine? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        #if DEBUG
+            let env = EVCEngineEnvironment.development
+            #else
+            let env = EVCEngineEnvironment.integration
+            #endif
+        engine = EVCEngine(initialContext: EVCEngineContext(environment: env,
+                                                            applicationForeground: UIApplication.shared.applicationState == .active))
+
+
+        /*
+         //Because this sample uses a storyboard, keyWindow is nil.
+         //If you were to instanciate your root view controller manually, then you would configure its engine at this point.
+         if let rootVC = UIApplication.shared.keyWindow?.rootViewController as? ViewController {
+            rootVC.engine = engine
+        }
+         */
+
         return true
     }
 
@@ -25,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        engine?.onApplicationDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -33,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        engine?.onApplicationDidBecomeActive()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

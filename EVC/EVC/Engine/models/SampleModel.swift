@@ -6,6 +6,6 @@
 
 import Foundation
 
-struct SampleModel {
+struct SampleModel: Codable {
     var value: Int
 }
