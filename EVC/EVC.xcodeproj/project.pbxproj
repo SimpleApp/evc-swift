@@ -46,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3249A52B1F62A7C4008E3D3B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3249A52C1F62A9AB008E3D3B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		32612C421F5F2C4D002AA876 /* EVCEngineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVCEngineComponent.swift; sourceTree = "<group>"; };
 		32612C451F5F2C63002AA876 /* EVCEngineContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVCEngineContext.swift; sourceTree = "<group>"; };
 		32612C481F5F2D34002AA876 /* FileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
@@ -89,6 +91,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3249A52A1F62A769008E3D3B /* sensor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sensor;
+			sourceTree = "<group>";
+		};
 		32612C571F602A60002AA876 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				32B6DABE1F5DFCDE0062E68D /* network */,
+				3249A52A1F62A769008E3D3B /* sensor */,
 				32B6DABD1F5DFCD90062E68D /* storage */,
 				32B6DAC11F5E00A90062E68D /* README.md */,
 			);
@@ -175,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				32612C511F5F3224002AA876 /* SampleModel.swift */,
+				3249A52B1F62A7C4008E3D3B /* README.md */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 		32B6DABF1F5DFCF30062E68D /* middlewares */ = {
 			isa = PBXGroup;
 			children = (
+				3249A52C1F62A9AB008E3D3B /* README.md */,
 			);
 			path = middlewares;
 			sourceTree = "<group>";
