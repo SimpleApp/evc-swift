@@ -33,6 +33,7 @@
 		32B6DAB81F5DF7960062E68D /* WeakObserverOrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B6DAB61F5DF7960062E68D /* WeakObserverOrderedSet.swift */; };
 		32B6DABA1F5DFB2F0062E68D /* EVCEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B6DAB91F5DFB2F0062E68D /* EVCEngine.swift */; };
 		32B6DABB1F5DFB2F0062E68D /* EVCEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B6DAB91F5DFB2F0062E68D /* EVCEngine.swift */; };
+		A04A484420EE10870057A1B5 /* EVCObservableEngineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A484320EE10870057A1B5 /* EVCObservableEngineComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		32B6DAC01F5DFE040062E68D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		32B6DAC11F5E00A90062E68D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		32B6DAC21F5E04000062E68D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A04A484320EE10870057A1B5 /* EVCObservableEngineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVCObservableEngineComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				32612C421F5F2C4D002AA876 /* EVCEngineComponent.swift */,
 				32612C451F5F2C63002AA876 /* EVCEngineContext.swift */,
 				32B6DAC21F5E04000062E68D /* README.md */,
+				A04A484320EE10870057A1B5 /* EVCObservableEngineComponent.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A04A484420EE10870057A1B5 /* EVCObservableEngineComponent.swift in Sources */,
 				32612C4C1F5F2DFE002AA876 /* SampleJSONRestAPI.swift in Sources */,
 				32612C521F5F3224002AA876 /* SampleModel.swift in Sources */,
 				32612C4F1F5F2E4C002AA876 /* SampleService.swift in Sources */,
