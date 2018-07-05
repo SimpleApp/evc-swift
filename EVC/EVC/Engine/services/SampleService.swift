@@ -22,6 +22,7 @@ class SampleService {
     fileprivate      var dataLoaded: Bool = false
     fileprivate      var sampleData: SampleModel? = nil
     fileprivate(set) var observers  = WeakObserverOrderedSet<SampleServiceObserver>()
+    // Remove fileprivate(set) modifier if using EVCObservableEngineComponent
 
     //MARK: - Init
     init( dataStore: FileDataStore,
@@ -41,6 +42,7 @@ class SampleService {
     //MARK: - Public Service API
     //Those are the functions your GUI layer will call.
     //Those are the functions you would create a protocol from, in order to create a mock for unit-testing your GUI.
+    // Methods for (un/)registering observer can be omitted if using EVCObservableEngineComponent
 
     public var currentSampleData: SampleModel? { return sampleData }
     public func register(observer : SampleServiceObserver) {
@@ -61,7 +63,31 @@ class SampleService {
 }
 
 //MARK: - EVCEngineComponent
+//
 extension SampleService: EVCEngineComponent {
+    
+    //load data the first time the engine provide us with some context.
+    func onEngineContextUpdate(context: EVCEngineContext) {
+        if dataLoaded == false {
+            sampleData = dataStore.loadModel()
+            dataLoaded = true
+        }
+    }
+    
+}
+/*
+    You can use EVCObservableEngineComponent to avoid defining (un/)registering
+    methods. As a tradeof, you'll loose fileprivate(set) modifier for observer
+    property
+ 
+extension SampleService: EVCObservableEngineComponent {
+    typealias Observer = SampleServiceObserver
+    
+    // Forward data to new observer
+    func onRegister(observer: SampleServiceObserver) {
+        observer.onSampleService(self, didUpdateSampleDataTo: sampleData)
+    }
+    
     //load data the first time the engine provide us with some context.
     func onEngineContextUpdate(context: EVCEngineContext) {
         if dataLoaded == false {
@@ -70,3 +96,4 @@ extension SampleService: EVCEngineComponent {
         }
     }
 }
+*/
